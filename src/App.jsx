@@ -24,16 +24,12 @@ function App() {
     <div className="App">
       <header className="App-header">
         💀💀 & 🌹🌹
-        <button onClick={() => newGame(3)}>New Game</button>
-        <button>Join a Game</button>
+        <button onClick={() => newGame(4)}>New Game</button>
       </header>
-
-      {gameObj &&
-        gameObj?.hands.map((hand, index) => {
-          return (
-            <PlayerHand key={index} hand={hand} playerNumber={index + 1} />
-          );
-        })}
+      <PlayerHand playerName="Joey" />
+      <PlayerHand playerName="Kath" />
+      <PlayerHand playerName="David" />
+      <PlayerHand playerName="Blaine" />
 
       <Gameboard />
     </div>
