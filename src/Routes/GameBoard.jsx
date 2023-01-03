@@ -1,4 +1,5 @@
 import axios from "axios";
+import GameBoardCard from "../Components/GameBoardCard";
 
 function Gameboard({ gameState }) {
   return (
@@ -13,15 +14,7 @@ function Gameboard({ gameState }) {
                 Full Hand:{" "}
                 {player.fullHand.map((card, index) => {
                   console.log("in player hand", card);
-                  return (
-                    <span key={index}>
-                      {card.isSkull === true ? (
-                        <span>💀</span>
-                      ) : (
-                        <span>🌹</span>
-                      )}
-                    </span>
-                  );
+                  return <GameBoardCard key={index} card={card} />;
                 })}
               </div>
             </div>

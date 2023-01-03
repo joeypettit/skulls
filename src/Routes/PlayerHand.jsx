@@ -1,4 +1,4 @@
-import Card from "../Components/Card";
+import PlayerCard from "../Components/PlayerCard";
 import axios from "axios";
 import { useState } from "react";
 

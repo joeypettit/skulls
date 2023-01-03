@@ -1,10 +1,5 @@
-function GameBoardCard() {
-  return (
-    <div>
-      {isSkull ? <div>💀</div> : <div>🌹</div>}
-      <div>{isSkull}</div>
-    </div>
-  );
+function GameBoardCard({ card }) {
+  return <span>{card.isSkull ? <span>💀</span> : <span>🌹</span>}</span>;
 }
 
-export default Card;
+export default GameBoardCard;
