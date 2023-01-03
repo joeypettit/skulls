@@ -12,11 +12,6 @@ function PlayerHand({ playerName }) {
     <div>
       <div>
         <h3>{playerName}</h3>
-        {isPlayerTurn ? <div>Your Turn</div> : <div>Not Your Turn</div>}
-
-        {hand.map((isSkull, index) => {
-          return <Card key={index} isSkull={isSkull} />;
-        })}
       </div>
     </div>
   );

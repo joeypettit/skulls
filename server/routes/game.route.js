@@ -1,15 +1,11 @@
 const express = require('express');
-const pool = require('../modules/pool');
 const router = express.Router();
-const newGame = require('../gameFunctions/newGame');
-/**
- * GET route template
- */
-router.get('/new/:numOfPlayers', (req, res) => {
-  const numOfPlayers = req.params.numOfPlayers;
-  const gameObj = newGame(numOfPlayers);
-  res.send(gameObj);
+let newGame = require('../gameFunctions/newGame');
+let gameState = require('../gameState/gameState');
 
+router.get('/new/', (req, res) => {
+  gameState = newGame();
+  res.send(gameState);
 });
 
 /**
