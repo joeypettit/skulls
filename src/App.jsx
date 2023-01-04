@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import PlayerHand from "./Routes/PlayerHand";
 import GameBoard from "./Routes/GameBoard";
@@ -20,12 +20,22 @@ function App() {
       .catch((error) => console.log(error));
   }
 
+  useEffect(newGame, []);
+
   return (
     <div className="App">
       <header className="App-header">
         💀💀 & 🌹🌹
         <button onClick={() => newGame()}>New Game</button>
       </header>
+
+      <div className="player-hands">
+        <h1>Player Hands:</h1>
+        <PlayerHand playerId={1} />
+        <PlayerHand playerId={2} />
+        <PlayerHand playerId={3} />
+      </div>
+
       <GameBoard gameState={gameState} />
     </div>
   );

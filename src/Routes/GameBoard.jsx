@@ -3,7 +3,7 @@ import GameBoardCard from "../Components/GameBoardCard";
 
 function Gameboard({ gameState }) {
   return (
-    <>
+    <div className="gameboard">
       <h1>This is a Gameboard</h1>
       {Object.keys(gameState).length !== 0 &&
         gameState.players.map((player, index) => {
@@ -13,14 +13,13 @@ function Gameboard({ gameState }) {
               <div>
                 Full Hand:{" "}
                 {player.fullHand.map((card, index) => {
-                  console.log("in player hand", card);
                   return <GameBoardCard key={index} card={card} />;
                 })}
               </div>
             </div>
           );
         })}
-    </>
+    </div>
   );
 }
 

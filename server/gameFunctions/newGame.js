@@ -11,8 +11,9 @@ function newGame() {
     players: [
       {
         name: "Joey",
+        playerId: 1,
         fullHand: [{
-            isSkull: false,
+            isSkull: true,
             isRevealed: false
         }, {
             isSkull: false,
@@ -21,7 +22,7 @@ function newGame() {
             isSkull: false,
             isRevealed: false
         },{
-            isSkull: true,
+            isSkull: false,
             isRevealed: false
         }],
         cardsInHand: [],    // cards that are in the players hand as play progresses
@@ -32,17 +33,18 @@ function newGame() {
       },
       {
         name: "Kath",
+        playerId: 2,
         fullHand: [{
             isSkull: false,
             isRevealed: false
         }, {
-            isSkull: false,
-            isRevealed: false
-        },{
-            isSkull: false,
-            isRevealed: false
-        },{
             isSkull: true,
+            isRevealed: false
+        },{
+            isSkull: false,
+            isRevealed: false
+        },{
+            isSkull: false,
             isRevealed: false
         }],
         cardsInHand: [],    // cards that are in the players hand as play progresses
@@ -53,6 +55,7 @@ function newGame() {
       },
       {
         name: "David",
+        playerId: 3,
         fullHand: [{
             isSkull: false,
             isRevealed: false
