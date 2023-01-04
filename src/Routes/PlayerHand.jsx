@@ -15,15 +15,15 @@ function PlayerHand({ playerId }) {
       setPlayerState(response.data);
     });
   }
-  useEffect(() => updatePlayerInfo, []);
 
   return (
     <div>
       <h3>{Object.keys(playerState).length !== 0 && playerState.name}</h3>
       <h4>Hand is:</h4>
-      {playerState.fullHand.map((card) => {
-        return <PlayerCard card={card} />;
-      })}
+      {Object.keys(playerState).length !== 0 &&
+        playerState.cardsInHand.map((card) => {
+          return <PlayerCard card={card} />;
+        })}
 
       <button onClick={updatePlayerInfo}>Update</button>
     </div>

@@ -2,8 +2,9 @@
 function newGame() {
   const gameState = {
     gameId: 0,
-    whosTurn: "Joey", //player name
-    gameStage: "laying", // , laying, betting, flipping,
+    gameStage: "laying", // , laying, betting, flipping, scoring
+    playerOrder: ["Joey", "David", "Kath"], // order of play, first player in array is the dealer for the round
+    round: 0,
     latestBet: {
       numOfCards: null, // number of cards currently being bet
       highestBetter: null, // player with highest bet
@@ -11,8 +12,9 @@ function newGame() {
     players: [
       {
         name: "Joey",
+        isPlayersTurn: false,
         playerId: 1,
-        fullHand: [{
+        allCards: [{
             isSkull: true,
             isRevealed: false
         }, {
@@ -33,8 +35,9 @@ function newGame() {
       },
       {
         name: "Kath",
+        isPlayersTurn: false,
         playerId: 2,
-        fullHand: [{
+        allCards: [{
             isSkull: false,
             isRevealed: false
         }, {
@@ -55,8 +58,9 @@ function newGame() {
       },
       {
         name: "David",
+        isPlayersTurn: false,
         playerId: 3,
-        fullHand: [{
+        allCards: [{
             isSkull: false,
             isRevealed: false
         }, {

@@ -12,7 +12,7 @@ function Gameboard({ gameState }) {
               <h1>{player.name}</h1>
               <div>
                 Full Hand:{" "}
-                {player.fullHand.map((card, index) => {
+                {player.allCards.map((card, index) => {
                   return <GameBoardCard key={index} card={card} />;
                 })}
               </div>

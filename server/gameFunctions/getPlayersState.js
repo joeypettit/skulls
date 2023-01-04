@@ -1,3 +1,5 @@
+// this function takes a player id and the full game's state,
+// pulls out, and returns the state of the player with the matching id
 function getPlayerState(playerId, gameState){
     const allPlayers = gameState.players;
     let thisPlayerState;

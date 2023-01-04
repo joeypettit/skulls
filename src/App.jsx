@@ -20,13 +20,23 @@ function App() {
       .catch((error) => console.log(error));
   }
 
-  useEffect(newGame, []);
+  function newRound() {
+    axios({
+      method: "GET",
+      url: `/api/game/newround/`,
+    })
+      .then((response) => {
+        console.log("new round successful");
+      })
+      .catch((error) => console.log(error));
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         💀💀 & 🌹🌹
         <button onClick={() => newGame()}>New Game</button>
+        <button onClick={() => newRound()}>New Round</button>
       </header>
 
       <div className="player-hands">
