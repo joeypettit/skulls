@@ -1,5 +1,5 @@
-function Card({ isSkull }) {
-  return <div>{isSkull ? <div>💀</div> : <div>🌹</div>}</div>;
+function Card({ card }) {
+  return <span>{card.isSkull ? <span>💀</span> : <span>🌹</span>}</span>;
 }
 
 export default Card;
