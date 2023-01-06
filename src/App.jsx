@@ -3,6 +3,7 @@ import "./App.css";
 import PlayerHand from "./Routes/PlayerHand";
 import GameBoard from "./Routes/GameBoard";
 import axios from "axios";
+import { io } from "socket.io-client";
 
 function App() {
   const [gameState, setGameState] = useState({});
@@ -31,6 +32,19 @@ function App() {
       .catch((error) => console.log(error));
   }
 
+  // socket.io
+  const socket = io.connect("http://localhost:5000");
+
+  function sendMessage() {
+    socket.emit("send-message", { data: "stuff" });
+  }
+
+  useEffect(() => {
+    socket.on("recieve-message", (data) => {
+      alert("hi");
+    });
+  }, [socket]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -38,6 +52,10 @@ function App() {
         <button onClick={() => newGame()}>New Game</button>
         <button onClick={() => newRound()}>New Round</button>
       </header>
+      <div>
+        <input />
+        <button onClick={sendMessage}>Send</button>
+      </div>
 
       <div className="player-hands">
         <h1>Player Hands:</h1>
