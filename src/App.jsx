@@ -7,18 +7,14 @@ import { io } from "socket.io-client";
 
 function App() {
   const [gameState, setGameState] = useState({});
+  console.log("gamestate is", gameState);
+
+  // socket.io ~~~~~~~~~~~~~
+  const socket = io.connect("http://localhost:5000");
 
   // this function will request a new game object from server and set it to state
-  function newGame(numOfPlayers) {
-    axios({
-      method: "GET",
-      url: `/api/game/new/`,
-    })
-      .then((response) => {
-        console.log(response.data);
-        setGameState(response.data);
-      })
-      .catch((error) => console.log(error));
+  function newGame() {
+    socket.emit("new-game");
   }
 
   function newRound() {
@@ -32,18 +28,17 @@ function App() {
       .catch((error) => console.log(error));
   }
 
-  // socket.io
-  const socket = io.connect("http://localhost:5000");
-
-  function sendMessage() {
+  function update() {
     socket.emit("send-message", { data: "stuff" });
   }
 
+  // listener for gamestate updates (via socket.io)
   useEffect(() => {
-    socket.on("recieve-message", (data) => {
-      alert("hi");
+    socket.on("update-gamestate", (updatedGameState) => {
+      setGameState(updatedGameState);
     });
   }, [socket]);
+  // ~~~~~~~~~~~~~~~~~
 
   return (
     <div className="App">
@@ -52,10 +47,6 @@ function App() {
         <button onClick={() => newGame()}>New Game</button>
         <button onClick={() => newRound()}>New Round</button>
       </header>
-      <div>
-        <input />
-        <button onClick={sendMessage}>Send</button>
-      </div>
 
       <div className="player-hands">
         <h1>Player Hands:</h1>

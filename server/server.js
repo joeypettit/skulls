@@ -18,14 +18,28 @@ const io = new Server(server, {
   }
 })
 
+const bodyParser = require('body-parser');
+
+// import gameplay functions
+const newGame = require('./gameFunctions/newGame');
+let gameState = require('./gameState/gameState');
+const getPlayerState = require('./gameFunctions/getPlayersState');
+const newRound = require('./gameFunctions/newRound');
+
+
+// on socket.io connection
 io.on('connection', (socket)=>{
-  console.log('user connected', socket.id);
-  socket.on('send-message', (data)=>{
-    socket.broadcast.emit('recieve-message', data);
-  })
+  console.log('connected', socket.id);
+
+  // listener: reset gamestate and send it back
+  socket.on('new-game', ()=> {
+    const gameState = newGame();
+    socket.emit('update-gamestate', gameState);
+  });
+  
 })
 
-const bodyParser = require('body-parser');
+
 
 
 // Route includes

@@ -1,5 +1,6 @@
 // this function will create a gameState object based on the number of players
 function newGame() {
+  console.log('new game initiated');
   const gameState = {
     gameId: 0,
     gameStage: "laying", // , laying, betting, flipping, scoring
