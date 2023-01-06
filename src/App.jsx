@@ -28,6 +28,10 @@ function App() {
       .catch((error) => console.log(error));
   }
 
+  function sendPlayerId(id) {
+    socket.emit("send-player-id", id);
+  }
+
   function update() {
     socket.emit("send-message", { data: "stuff" });
   }
@@ -49,10 +53,8 @@ function App() {
       </header>
 
       <div className="player-hands">
-        <h1>Player Hands:</h1>
-        <PlayerHand playerId={1} />
-        <PlayerHand playerId={2} />
-        <PlayerHand playerId={3} />
+        <h1>Player Hand:</h1>
+        <PlayerHand sendPlayerId={sendPlayerId} />
       </div>
 
       <GameBoard gameState={gameState} />
