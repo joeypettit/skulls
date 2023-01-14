@@ -1,5 +1,5 @@
 import axios from "axios";
-import GameBoardCard from "../Components/GameBoardCard";
+import GameBoardCard from "./GameBoardCard";
 
 function Gameboard({ gameState }) {
   return (

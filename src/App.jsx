@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import PlayerHand from "./Routes/PlayerHand";
-import GameBoard from "./Routes/GameBoard";
+import PlayerHand from "./Player/PlayerHand";
+import GameBoard from "./Gameboard/GameBoard";
 import axios from "axios";
 
 function App() {
